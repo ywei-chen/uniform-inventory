@@ -1,0 +1,8 @@
+@reference "tailwindcss";
+
+.menuItem {
+  @apply ml-14 mb-3 text-lg font-medium tracking-wider
+         hover:text-sky-700 hover:bg-stone-200
+         active:text-white active:bg-sky-700
+         cursor-pointer rounded-md p-1;
+}
