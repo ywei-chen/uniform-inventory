@@ -1,45 +1,67 @@
 import '@/styles/globals.css';
-import styles from '../styles/style.module.css';
+import styles from '@/styles/style.module.css';
+
+const Leftlocation = () => {
+    return (<>
+        <div className='rounded-md bg-stone-50 ml-10 mr-3 w-80 h-150 overflow-hidden shadow-lg'>
+            <div className='bg-sky-700 h-16 w-full grid place-items-center mb-10'>
+                <p className='text-stone-50 text-xl font-semibold tracking-wider'>庫存管理系統</p>
+            </div>
+            <div>
+                <div className='mb-6'>
+                    <h2 className={styles.menuSection}>庫存管理</h2>
+                    <div>
+                        <p className={styles.menuItem}>基本資料管理</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div className='mb-6'>
+                    <h2 className={styles.menuSection}>進出貨管理</h2>
+                    <div className='list-none'>
+                        <p className={styles.menuItem}>進庫管裡</p>
+                        <p className={styles.menuItem}>進庫紀錄</p>
+                        <p className={styles.menuItem}>出庫管理</p>
+                        <p className={styles.menuItem}>出庫紀錄</p>
+                    </div>
+
+                </div>
+                <div className='mb-6'>
+                    <h2 className={styles.menuSection}>其他設定</h2>
+                    <div className='list-none'>
+                        <p className={styles.menuItem}>帳號設定</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </>)
+}
+
 
 const Content = () => {
+    const pItem = ['編碼代號', '性別代號', '尺寸代號', '創建時間', '二維碼'];
     return (<>
         <div className='my-10'></div>
         <section>
             <div className='flex items-center justify-center'>
-                {/*左欄區域 */}
-                <div className='rounded-md bg-stone-50 ml-10 mr-3 w-80 h-150 overflow-hidden'>
-                    <div className='bg-sky-700 h-16 w-full grid place-items-center mb-10'>
-                        <p className='text-stone-50 text-xl font-semibold tracking-wider'>庫存管理系統</p>
-                    </div>
-                    <div>
-                        <div className='mb-8'>
-                            <h2 className='text-xl ml-7 mb-4 text-sky-700 font-semibold tracking-wider'>庫存管理</h2>
-                            <ul className='list-none'>
-                                <li className={styles.menuItem}>基本資料管理</li>
-                            </ul>
+                <Leftlocation />
+                {/*右欄區域 */}
+                <div className='rounded-md bg-stone-50 ml-3 mr-10 w-full h-150 shadow-lg'>
+                    <div className='flex mb-10'>
+                        <form className='flex justify-start items-center'>
+                            <input name='qrcode' placeholder='請掃描或輸入QRcode' className={styles.inputItem}></input>
+                            <button className={styles.buttonSearch}>搜尋</button>
+                        </form>
+                        <div className='w-full flex justify-start'>
+                            <button className={styles.buttonCreat}>新增</button>
                         </div>
                     </div>
-                    <div>
-                        <div className='mb-8'>
-                            <h2 className='text-xl ml-7 mb-4 text-sky-700 font-semibold tracking-wider'>進出貨管理</h2>
-                            <ul className='list-none'>
-                                <li className='ml-14 mb-3 text-lg font-medium tracking-wider'>進庫管裡</li>
-                                <li className='ml-14 mb-3 text-lg font-medium tracking-wider'>進庫紀錄</li>
-                                <li className='ml-14 mb-3 text-lg font-medium tracking-wider'>出庫管理</li>
-                                <li className='ml-14 mb-3 text-lg font-medium tracking-wider'>出庫紀錄</li>
-                            </ul>
-
-                        </div>
-                        <div className='mb-8'>
-                            <h2 className='text-xl ml-7 mb-4 text-sky-700 font-semibold tracking-wider'>其他設定</h2>
-                            <ul className='list-none'>
-                                <li className='ml-14 mb-3 text-lg font-medium tracking-wider'>帳號設定</li>
-                            </ul>
-                        </div>
+                    <div className='rounded-sm h-11 w-auto flex justify-around items-center bg-slate-600 mx-6 '>
+                        {pItem.map((item) => {
+                            return (<p className={styles.pItem} key={item}>{item}</p>)
+                        })}
                     </div>
                 </div>
-                {/*右欄區域 */}
-                <div className='rounded-md bg-stone-50 ml-3 mr-10 w-full h-150'></div>
             </div>
         </section>
         <div className='my-10'></div>
