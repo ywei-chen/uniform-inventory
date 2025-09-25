@@ -1,5 +1,6 @@
 import '@/styles/globals.css';
 import styles from '@/styles/style.module.css';
+import Createpage from './createpage';
 
 const Leftlocation = () => {
     return (<>
@@ -41,9 +42,9 @@ const Leftlocation = () => {
 const Content = () => {
     const pItem = ['編碼代號', '性別代號', '尺寸代號', '制服種類','創建時間', '二維碼','編輯','刪除'];
     return (<>
-        <div className='my-10'></div>
         <section>
-            <div className='flex items-center justify-center'>
+            <div className='flex items-center justify-center my-10 static'>
+                <Createpage />
                 <Leftlocation />
                 {/*右欄區域 */}
                 <div className='rounded-md bg-stone-50 ml-3 mr-10 w-full h-150 shadow-lg'>
