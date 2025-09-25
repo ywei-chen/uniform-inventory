@@ -39,7 +39,7 @@ const Leftlocation = () => {
 
 
 const Content = () => {
-    const pItem = ['編碼代號', '性別代號', '尺寸代號', '創建時間', '二維碼'];
+    const pItem = ['編碼代號', '性別代號', '尺寸代號', '制服種類','創建時間', '二維碼','編輯','刪除'];
     return (<>
         <div className='my-10'></div>
         <section>
