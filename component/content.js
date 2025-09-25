@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 import styles from '@/styles/style.module.css';
 import Createpage from './createpage';
+import { useState } from 'react';
 
 const Leftlocation = () => {
     return (<>
@@ -41,6 +42,7 @@ const Leftlocation = () => {
 
 const Content = () => {
     const pItem = ['編碼代號', '性別代號', '尺寸代號', '制服種類','創建時間', '二維碼','編輯','刪除'];
+    const [createpage, setCreatepage] = useState(false);
     return (<>
         <section>
             <div className='flex items-center justify-center my-10 static'>
