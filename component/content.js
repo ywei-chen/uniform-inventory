@@ -25,7 +25,7 @@ const Leftlocation = () => {
                 <div className='mb-6'>
                     <h2 className={styles.menuSection}>進出貨管理</h2>
                     <div className='list-none'>
-                        <p className={styles.menuItem}>進庫管裡</p>
+                        <p className={styles.menuItem}>進庫管理</p>
                         <p className={styles.menuItem}>進庫紀錄</p>
                         <p className={styles.menuItem}>出庫管理</p>
                         <p className={styles.menuItem}>出庫紀錄</p>
@@ -68,6 +68,9 @@ const Content = () => {
                         {pItem.map((item) => {
                             return (<p className={styles.pItem} key={item}>{item}</p>)
                         })}
+                    </div>
+                    <div className='rounded-sm h-11 w-auto flex justify-around items-center border-stone-200 mx-6'>
+
                     </div>
                 </div>
             </div>
