@@ -22,15 +22,6 @@ const Createpage = ({onClose, onSave}) => {
         { value: '3XL', label: '3XL'}, { value: '4XL', label: '4XL'}, { value: '5XL', label: '5XL'},
     ];
 
-    const handleSave = () => {
-        onSave({
-            gender: genderPick,
-            uniform: uniformPick,
-            size: sizePick
-        });
-        onClose();
-    }
-
     useEffect(() => {
         if (genderPick && uniformPick && sizePick) {
             const newCode = `${genderPick}-${uniformPick}-${sizePick}`;
@@ -38,7 +29,24 @@ const Createpage = ({onClose, onSave}) => {
         }else {
             setCode('');
         }
-    })
+    },[genderPick, uniformPick, sizePick]);
+
+    const handleSave = async() => {
+        if (!genderPick || !uniformPick || !sizePick){
+            alert('請完整填寫資訊');
+        }
+
+        const payload = {
+            code: code,
+            gender: genderPick,
+            sizes: sizePick,
+            uniform: uniformPick 
+        };
+
+        
+    }
+
+
 
     return (<>
         <div className='fixed z-30 inset-0 flex justify-center items-center'>
