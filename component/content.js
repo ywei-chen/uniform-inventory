@@ -47,11 +47,17 @@ const Leftlocation = () => {
 const Content = () => {
     const pItem = ['編碼代號', '性別代號', '尺寸代號', '制服種類','創建時間', '二維碼','編輯','刪除'];
     const [isOpen, setIsopen] = useState(false);
+    const [formData, setFormdata] = useState(null);
+
+    const handleData = (data) => {
+        console.log('資料: ', data);
+        setFormdata(data);
+    }
     
     return (<>
         <section>
             <div className='flex items-center justify-center my-10'>
-                { isOpen && <Createpage onClose={() => setIsopen(false)}/>}
+                { isOpen && <Createpage onClose={() => setIsopen(false)} onSave={handleData} />}
                 <Leftlocation />
                 {/*右欄區域 */}
                 <div className='rounded-md bg-stone-50 ml-3 mr-10 w-full h-150 shadow-lg'>
@@ -69,7 +75,7 @@ const Content = () => {
                             return (<p className={styles.pItem} key={item}>{item}</p>)
                         })}
                     </div>
-                    <div className='rounded-sm h-11 w-auto flex justify-around items-center border-stone-200 mx-6'>
+                    <div className='rounded-sm h-11 w-auto flex justify-around items-center border-sky-600 mx-6'>
 
                     </div>
                 </div>

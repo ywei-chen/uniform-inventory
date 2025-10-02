@@ -2,9 +2,15 @@
 
 import '@/styles/globals.css';
 import styles from '@/styles/style.module.css';
-import { use, useState } from 'react';
+import { use, useEffect, useState } from 'react';
+import { set } from 'react-hook-form';
 
-const Createpage = ({onClose}) => {
+const Createpage = ({onClose, onSave}) => {
+    const [genderPick, setGenderpick] = useState('');
+    const [uniformPick, setUniformpick] = useState('');
+    const [sizePick, setSizepick] = useState('');
+    const [code, setCode] = useState(''); 
+
     const gender = [{ value: 'F', label: '女生'}, { value: 'M', label: '男生'}];
     const uniform = [
         {value: 'coach', label:'教練上衣'}, {value: 'common', label:'一般上衣'},
@@ -16,6 +22,23 @@ const Createpage = ({onClose}) => {
         { value: '3XL', label: '3XL'}, { value: '4XL', label: '4XL'}, { value: '5XL', label: '5XL'},
     ];
 
+    const handleSave = () => {
+        onSave({
+            gender: genderPick,
+            uniform: uniformPick,
+            size: sizePick
+        });
+        onClose();
+    }
+
+    useEffect(() => {
+        if (genderPick && uniformPick && sizePick) {
+            const newCode = `${genderPick}-${uniformPick}-${sizePick}`;
+            setCode(newCode);
+        }else {
+            setCode('');
+        }
+    })
 
     return (<>
         <div className='fixed z-30 inset-0 flex justify-center items-center'>
@@ -27,7 +50,7 @@ const Createpage = ({onClose}) => {
                 <form>
                     <div className='mb-4'>
                         <h1 className='font-medium mb-1'>性別代號</h1>
-                        <select className={styles.selectItem} defaultValue=''>
+                        <select className={styles.selectItem} value={genderPick} onChange={(e) => setGenderpick(e.target.value)}>
                             <option value='' disabled>請選擇性別</option>
                             {gender.map((gender) => {
                                 return (
@@ -38,7 +61,7 @@ const Createpage = ({onClose}) => {
                     </div>
                     <div className='mb-4'>
                         <h1 className='font-medium mb-1'>制服種類</h1>
-                        <select className={styles.selectItem} defaultValue=''>
+                        <select className={styles.selectItem} value={uniformPick} onChange={(e) => setUniformpick(e.target.value)}>
                             <option value='' disabled>請選擇制服</option>
                             {uniform.map((uniform) => {
                                 return (
@@ -49,7 +72,7 @@ const Createpage = ({onClose}) => {
                     </div>
                     <div className='mb-4'>
                         <h1 className='font-medium mb-1'>尺寸代號</h1>
-                        <select className={styles.selectItem} defaultValue=''>
+                        <select className={styles.selectItem} value={sizePick} onChange={(e) => setSizepick(e.target.value)}>
                             <option value='' disabled>請輸入尺寸</option>
                             {sizes.map((size) => {
                                 return (
@@ -59,7 +82,13 @@ const Createpage = ({onClose}) => {
                         </select>
                     </div>
                 </form>
-                <button className={styles.buttonSave}>儲存項目</button>
+                { code && <div className='mb-4'>
+                    <h1 className='font-medium mb-1'>序號產生</h1>
+                    <div className='bg-stone-200 size-full p-2 rounded-sm'>
+                        {code}
+                    </div>
+                </div>}
+                <button className={styles.buttonSave} onClick={handleSave}>儲存項目</button>
             </div>
         </div>
     </>)
